@@ -3,12 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package tp6ejercicio2;
+package entidades;
+
+import java.util.TreeSet;
 
 /**
  *
- * @author LAURA TELLO
+ * @author domin
  */
-public class Super {
+public class DeTodoSA {
+    public static TreeSet<Producto> listaProductos = new TreeSet<>();
     
 }
