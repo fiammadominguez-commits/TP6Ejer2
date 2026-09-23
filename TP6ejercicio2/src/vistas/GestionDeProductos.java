@@ -1,25 +1,49 @@
 package vistas;
 
+import entidades.DeTodoSA;
+import entidades.Producto;
 import javax.swing.JOptionPane;
 
-public class GestionDeProductos extends javax.swing.JFrame {
+public class GestionDeProductos extends javax.swing.JInternalFrame {
 
 
     public GestionDeProductos() {
 
         initComponents();
-
-        String[] categorias =
-
-        { "Comestibles, electrodomesticos, Ropa, limpieza"};
-
-        for (String categoria : categorias ) {
+            setClosable(true);
+             setIconifiable(true);
+               setMaximizable(true);
+                 setResizable(true);
+        String[] categorias = { "Comestibles", "Electrodomésticos", "Ropa", "Limpieza" };
+                for (String categoria : categorias ) {
 
             ComboCategoria.addItem(categoria);
-
         }
 
     }
+                    public boolean validarCamposVacios(javax.swing.JPanel panel) {
+    for (java.awt.Component c : panel.getComponents()) {
+        if (c instanceof javax.swing.JTextField) {
+            javax.swing.JTextField txt = (javax.swing.JTextField) c;
+            if (txt.getText().trim().isEmpty()) {
+                return false;
+            }
+        }
+    }
+    return true;
+}
+
+        public void vaciarCampos(javax.swing.JPanel panel) {
+    for (java.awt.Component c : panel.getComponents()) {
+        if (c instanceof javax.swing.JTextField) {
+            ((javax.swing.JTextField) c).setText("");
+        }
+        if (c instanceof javax.swing.JComboBox) {
+            ((javax.swing.JComboBox) c).setSelectedIndex(-1);
+        }
+    }
+}
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -176,27 +200,50 @@ public class GestionDeProductos extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAgregarActionPerformed
+       
+        if (!validarCamposVacios(jPanel1)) {
+    JOptionPane.showMessageDialog(this,
+            "Debe completar todos los campos.",  "Error",  JOptionPane.WARNING_MESSAGE);
+            return;
+            }
 
-               String Nombre = txtNombre.getText();
+        String categoria = ComboCategoria.getSelectedItem().toString();
+        String nombre = txtNombre.getText().trim();
+        String precioTexto = txtPrecio.getText().trim();
 
-               String precio = txtPrecio.getText();
+// Validar precio numérico
+            double precio;
+                try {
+                 precio = Double.parseDouble(precioTexto);
+            } catch (NumberFormatException ex) {
+    JOptionPane.showMessageDialog(this,
+            "El precio debe ser un número válido.",
+            "Error",
+            JOptionPane.WARNING_MESSAGE);
+    txtPrecio.requestFocus();
+    return;
+            }
 
-               if (Nombre.isEmpty())  {
+// Crear producto (usa tu clase Producto)
+        Producto nuevo = new Producto(DeTodoSA.listaProductos.size() + 1, nombre, precio, 0, categoria);
 
-                      if  (precio.isEmpty()) {
+// Intentar agregar al TreeSet
+            if (!DeTodoSA.agregarProducto(nuevo)) {
+    JOptionPane.showMessageDialog(this,
+            "Ya existe un producto con ese código.",
+            "Error",
+            JOptionPane.WARNING_MESSAGE);
+    return;
+        }
 
-                          
+// Agregar a la tabla
+        javax.swing.table.DefaultTableModel modelo = (javax.swing.table.DefaultTableModel) Jtablas.getModel();
+        modelo.addRow(new Object[]{nombre, categoria, precio});
 
-                          
-
-                          JOptionPane.showMessageDialog(this, "Debe completar todos los campos");
-
-                      }
-
-                      
-
-                      }
-                      
+// Limpiar campos
+        vaciarCampos(jPanel1);
+        txtNombre.requestFocus();
+   
     }//GEN-LAST:event_botonAgregarActionPerformed
 
     private void ComboCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboCategoriaActionPerformed

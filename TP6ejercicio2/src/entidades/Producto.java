@@ -11,7 +11,7 @@ import java.util.Objects;
  *
  * @author domin
  */
-public abstract class Producto implements Comparable<Producto> {
+public class Producto implements Comparable<Producto> {
     private int codigo;
     private String descripcion;
     private double precio;
