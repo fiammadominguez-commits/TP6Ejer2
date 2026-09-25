@@ -33,7 +33,7 @@ public class ConsultaPorPrecio extends javax.swing.JInternalFrame {
         String minTexto = txtMin.getText().trim();
         String maxTexto = txtMax.getText().trim();
 
-        // Validar campos vacíos
+        // campos vacíos
         if (minTexto.isEmpty() || maxTexto.isEmpty()) {
             JOptionPane.showMessageDialog(this,
                     "Debe completar ambos precios.",
@@ -42,7 +42,7 @@ public class ConsultaPorPrecio extends javax.swing.JInternalFrame {
             return;
         }
 
-        // Validar números
+        // Validamos números
         double min, max;
         try {
             min = Double.parseDouble(minTexto);
@@ -97,11 +97,7 @@ public class ConsultaPorPrecio extends javax.swing.JInternalFrame {
 
         jLabel1.setText("\"Precio Minimo\"");
 
-        txtMin.setText("jTextField1");
-
         jLabel2.setText("\"Precio Maximo\"");
-
-        txtMax.setText("jTextField1");
 
         btnBuscar.setText("Buscar");
 

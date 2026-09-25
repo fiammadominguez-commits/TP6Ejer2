@@ -41,7 +41,7 @@ public class ConsultaPorRubro extends javax.swing.JInternalFrame {
         String rubroSeleccionado = comboRubro.getSelectedItem().toString();
 
         DefaultTableModel modelo = (DefaultTableModel) tablaResultados.getModel();
-        modelo.setRowCount(0); // limpiar tabla
+        modelo.setRowCount(0); 
 
         for (Producto p : DeTodoSA.listaProductos) {
             if (p.getRubro().equalsIgnoreCase(rubroSeleccionado)) {

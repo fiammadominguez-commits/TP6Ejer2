@@ -196,7 +196,6 @@ public class GestionDeProductos extends javax.swing.JInternalFrame {
         String nombre = txtNombre.getText().trim();
         String precioTexto = txtPrecio.getText().trim();
 
-// Validar precio numérico
             double precio;
                 try {
                  precio = Double.parseDouble(precioTexto);
@@ -207,7 +206,6 @@ public class GestionDeProductos extends javax.swing.JInternalFrame {
     return;
             }
 
-// Crear producto (usa tu clase Producto)
         Producto nuevo = new Producto(DeTodoSA.listaProductos.size() + 1, nombre, precio, 0, categoria);
 
             if (!DeTodoSA.agregarProducto(nuevo)) {
@@ -218,11 +216,9 @@ public class GestionDeProductos extends javax.swing.JInternalFrame {
     return;
         }
 
-//tabla
         javax.swing.table.DefaultTableModel modelo = (javax.swing.table.DefaultTableModel) Jtablas.getModel();
         modelo.addRow(new Object[]{nombre, categoria, precio});
 
-// Limpiar campos
         vaciarCampos(jPanel2);
         txtNombre.requestFocus();
    

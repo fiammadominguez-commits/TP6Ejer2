@@ -71,9 +71,6 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="txtMin">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="jTextField1"/>
-      </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel2">
       <Properties>
@@ -81,9 +78,6 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="txtMax">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="jTextField1"/>
-      </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="btnBuscar">
       <Properties>

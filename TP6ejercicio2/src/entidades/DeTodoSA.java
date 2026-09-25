@@ -13,12 +13,12 @@ import java.util.TreeSet;
  */
 public class DeTodoSA {
     public static TreeSet<Producto> listaProductos = new TreeSet<>();
-    // Agregar producto
+   
     public static boolean agregarProducto(Producto p) {
     return listaProductos.add(p);   
 }
 
-// Buscar por código
+
     public static Producto buscarPorCodigo(int codigo) {
     for (Producto p : listaProductos) {
         if (p.getCodigo() == codigo) {
@@ -28,7 +28,7 @@ public class DeTodoSA {
     return null;
 }
 
-// Eliminar producto
+
     public static boolean eliminarProducto(int codigo) {
     Producto p = buscarPorCodigo(codigo);
     if (p != null) {
@@ -38,7 +38,7 @@ public class DeTodoSA {
     return false;
 }
 
-// Buscar por rubro
+
     public static TreeSet<Producto> buscarPorRubro(String rubro) {
     TreeSet<Producto> resultado = new TreeSet<>();
     for (Producto p : listaProductos) {
@@ -49,7 +49,7 @@ public class DeTodoSA {
     return resultado;
 }
 
-// Buscar por nombre (descripcion)
+
     public static TreeSet<Producto> buscarPorNombre(String nombre) {
     TreeSet<Producto> resultado = new TreeSet<>();
     for (Producto p : listaProductos) {
@@ -60,7 +60,6 @@ public class DeTodoSA {
     return resultado;
 }
 
-// Buscar por precio menor o igual
     public static TreeSet<Producto> buscarPorPrecio(double precioMax) {
     TreeSet<Producto> resultado = new TreeSet<>();
     for (Producto p : listaProductos) {
